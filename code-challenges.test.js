@@ -13,10 +13,43 @@
 // --------------------1) Create a function that takes in an array, removes the first item from the array and shuffles the remaining content.
 
 // a) Create a test with an expect statement using the variable provided.
+
+// describe('stFunct1, stFunct2', () =>   
+  
+//   it(`takes in an array`, () =>
+  
+//       expect(`removes the first item from the array and shuffles the remaining content`)).objectContaining("blue", "green", "yellow", "pink");
+      
+//       expect(`removes the first item from the array and shuffles the remaining content`)).objectContaining("saffron", "aquamarine", "periwinkle", "indigo", "ochre")
+//     });
+//   });
+  
+describe('stFunct1', () => {
+  it('takes in an array and removes the first item shuffling the remaining content', () => {
+    expect(stFunct1(colors1)).toEqual(expect.arrayContaining(['blue','green','yellow','pink']))
+  })
+})
+
+describe('stFunct2', () => {
+  it('takes in an array and removes the first item shuffling the remaining content', () => {
+    expect(stFunct2(colors2)).toEqual(expect.arrayContaining(['saffron','aquamarine','periwinkle','indigo','ochre']))
+  })
+})
+//GOOD Failure
+
+
 // HINT: Check out this resource: https://jestjs.io/docs/expect#expectarraycontainingarray
+// Psudeocode: The function takes an array as input, then it creates a new array called newArray by extracting elements from colors1 starting from index 1 (excluding the first element). Then, it shuffles the elements in newArray using the .sort() method with a random comparison function (() => 0.5 - Math.random()). The stFunct function is called with colors1 as an argument, and the resulting shuffled array is stored in the finalArray variable. The finalArray is then displayed or printed to the console. The process is the same exact way for both array of colors, all that was changed was naming conventions.  
 
 const colors1 = ["purple", "blue", "green", "yellow", "pink"]
-// Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]
+const stFunct1 = (array) => {
+  const newArray = array.slice(1)
+  return newArray.sort(() => 0.5 - Math.random())
+}
+const finalArray = stFunct1(colors1)
+console.log(finalArray)
+Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]
+
 const colors2 = [
   "chartreuse",
   "indigo",
@@ -25,9 +58,21 @@ const colors2 = [
   "aquamarine",
   "saffron"
 ]
-// Expected output example (can be a different order): ["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]
+const stFunct2 = (array) => {
+  const newArray2 = array.slice(1)
+  return newArray2.sort(() => 0.5 - Math.random())
+}
+const finalArray2 = stFunct2(colors2)
+console.log(finalArray2)
+Expected output example (can be a different order): ["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]
 
 // b) Create the function that makes the test pass.
+// PASS  ./code-challenges.test.js
+// stFunct1
+//   ✓ takes in an array and removes the first item shuffling the remaining content (1 ms)
+// stFunct2
+//   ✓ takes in an array and removes the first item shuffling the remaining content
+
 
 // --------------------2) Create a function that takes in an object that contains up votes and down votes and returns the end tally.
 
